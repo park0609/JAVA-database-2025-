@@ -71,7 +71,7 @@ java 개발자 database 리포지토리
         [order by 정렬속성(들) asc|desc]
         [with rollup]
         ```
-    - 기본 쿼리 학습 : [SQL](./Day01/sql01_select기본.sql)
+    - 기본 쿼리 학습 : [SQL](./Day_01/sql01_select(기본).sql)
         1. 기본 select
         2. where 조건절
         3. null(!)
