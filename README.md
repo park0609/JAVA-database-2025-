@@ -14,32 +14,33 @@ java 개발자 database 리포지토리
     - SQL을 배우는 것이 목표
 - Oracle 설치(Docker)
     1. powersheel 오픈
-    2. docker pull doctorkiri/oracle-19c 입력
+    2. docker search로 다운받고싶은 이미지 검색
+    3. docker pull doctorkiri/oracle-19c 입력
         ```shell
         docker pull oracleinanutshell/oracle-xe-11g
         ```
-    3. 다운로드 된 이미지 확인
+    4. 다운로드 된 이미지 확인
         ```shell
         PS C:\Users\Admin> docker image ls
         ppsc                              1.3       c69e337855fc   24 hours ago   1.76GB
         oracleinanutshell/oracle-xe-11g   latest    8b740e77d4b9   6 years ago    2.79GB
         ```
-    4. 도커 컨테이너 실행
+    5. 도커 컨테이너 실행
         ```shell
         docker run --name oracle11g -d -p 1521:1521 --restart=always oracleinanutshell/oracle-xe-11g
         ```
         - 1521 오라클 기본 포트
         - 아이디 system / oracle
-    5. 도커 실행확인
+    6. 도커 실행확인
         -Docker Desktop > Containers 확인
-    6. powershell 오픈
+    7. powershell 오픈
         ```shell
         > docker exec -it oracle11g bash
         [oracle@776635265b18 ~]$ sqlplus / as sysdba
         SQL>
 
         ```
-    7. DBeaver 접속
+    8. DBeaver 접속
         - Connection > select your DB > oracle 선택
 
         <img src="./image/db001.png" width = "650>
@@ -52,11 +53,11 @@ java 개발자 database 리포지토리
         - 
     - SQL의 구성요소 3가지
     - DDL(Data Definition Lang) - 데이터베이스 생성, 테이블 생성, 그외 객체들을 생성 및 수정,삭제
-        - CREATE, ALTER, DROP ...
+        - `CREATE`, `ALTER`, `DROP` ...
     - DCL(Data Control Lang) - 사용자의 권한 부여, 해제, 트랜잭션 시작, 종료
-        - GRANT, REVOKE, BEGIN TRANS, COMMIT, ROLLBACK
+        - `GRANT`, `REVOKE`, `BEGIN TRANS`, `COMMIT`, `ROLLBACK`
     - DML(Data Manupulation Lang) - 데이터 조작언어(핵심), 데이터 삽입 및 조회, 수정, 삭제
-        - INSERT, SELECT, UPDATE, DELETE
+        - `INSERT`, `SELECT`, `UPDATE`, `DELETE`
 - SELECT 기본
     - 데이터 조회 시 사용하는 기본 명령어
         ```sql
@@ -77,4 +78,9 @@ java 개발자 database 리포지토리
         3. null(!)
         4. order by 정렬 
         5. 집합
+
+- 함수(내장함수) [SQL](./Day_01/sql02_select(기본).sql)
+    - 문자함수
+    - 숫자함수
+
 ## 2일차
