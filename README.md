@@ -16,24 +16,35 @@ java 개발자 database 리포지토리
     1. powersheel 오픈
     2. docker pull doctorkiri/oracle-19c 입력
         ```shell
-        PS C:\Users\Admin> docker pull doctorkirk/oracle-19c
-        Using default tag: latest
-        latest: Pulling from doctorkirk/oracle-19c  
-        30ed1731acd1: Download complete
-        1afbeedfc34a: Downloading [======>                                            ]  619.7MB/5.027GB
-        e8b1c0b24c00: Download complete
-        29415c7d058f: Download complete
-        8bfefd996a95: Download complete
-        198bff5413e1: Download complete
+        docker pull oracleinanutshell/oracle-xe-11g
         ```
     3. 다운로드 된 이미지 확인
         ```shell
         PS C:\Users\Admin> docker image ls
-        REPOSITORY              TAG       IMAGE ID       CREATED        SIZE
-        ppsc                    1.3       c69e337855fc   22 hours ago   1.76GB
-        doctorkirk/oracle-19c   latest    5816fe124f2a   3 years ago    16.8GB
+        ppsc                              1.3       c69e337855fc   24 hours ago   1.76GB
+        oracleinanutshell/oracle-xe-11g   latest    8b740e77d4b9   6 years ago    2.79GB
         ```
     4. 도커 컨테이너 실행
+        ```shell
+        docker run --name oracle11g -d -p 1521:1521 --restart=always oracleinanutshell/oracle-xe-11g
+        ```
+        - 1521 오라클 기본 포트
+        - 아이디 system / oracle
+    5. 도커 실행확인
+        -Docker Desktop > Containers 확인
+    6. powershell 오픈
+        ```shell
+        > docker exec -it oracle11g bash
+        [oracle@776635265b18 ~]$ sqlplus / as sysdba
+        SQL>
+
+        ```
+    7. DBeaver 접속
+        - Connection > select your DB > oracle 선택
+
+        <img src="./image/db001.png" width = "650>
+- DBeaver 툴 설치
+    - https://dbeaver.io/download/
 - DML, DDL, DCL
     - 언어의 특징을 가지고 있음
         - 프로그래밍언어와 차이 - 어떻게(How)
@@ -47,5 +58,23 @@ java 개발자 database 리포지토리
     - DML(Data Manupulation Lang) - 데이터 조작언어(핵심), 데이터 삽입 및 조회, 수정, 삭제
         - INSERT, SELECT, UPDATE, DELETE
 - SELECT 기본
-
+    - 데이터 조회 시 사용하는 기본 명령어
+        ```sql
+        -- sql 기본주석(한줄 주석)
+        /* 여러줄 주석
+        여러줄로 주석 작성가능*/
+        SELECT [ALL|DISTINCT] [*|컬럼명(들)]
+          from 테이블 명(들)
+        [where 검색조건(들)]
+        [group by 속성명(들)]
+        [having 집계함수조건(들)]
+        [order by 정렬속성(들) asc|desc]
+        [with rollup]
+        ```
+    - 기본 쿼리 학습 : [SQL](./Day01/sql01_select기본.sql)
+        1. 기본 select
+        2. where 조건절
+        3. null(!)
+        4. order by 정렬 
+        5. 집합
 ## 2일차
