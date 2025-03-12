@@ -79,7 +79,7 @@ java 개발자 database 리포지토리
         4. order by 정렬 
         5. 집합
 
-- 함수(내장함수) [SQL](./Day_01/sql02_select(기본).sql)
+- 함수(내장함수) [SQL](./Day_01/sql02_함수.sql)
     - 문자함수
     - 숫자함수
 
