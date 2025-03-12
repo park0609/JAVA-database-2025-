@@ -108,5 +108,21 @@ java 개발자 database 리포지토리
     - blob - 대용량 바이너리 데이터타입, 최대 4GB
     - bfile - 외부파일
 
-- 함수(계속)
-    - 일반 함수
+- 함수(계속) [SQL](./Day_02/sql01_함수계속.sql)
+    - 문자함수
+    - 숫자함수
+    - 날짜함수
+    - 형변환 함수
+- 복수행함수[SQL](./Day_02/sql02_복수형함수.sql)
+    - 집계함수
+    - GROUP BY
+    - HAVING
+    - ROLLUP
+    - RANK, DENSE_RANK
+
+## 3일차
+- JOIN
+    - 카티션곱
+    - 내부조인, 외부조인
+- DDL
+    - CREATE, 
