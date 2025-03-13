@@ -122,7 +122,11 @@ java 개발자 database 리포지토리
 
 ## 3일차
 - JOIN
-    - 카티션곱
+    - ERD(Entitiy Relationship Diagram) - 개체 관계 다이어그램
+        - PK(Primary Key) - 기본 키 -> 중복이 안되고 빠진 데이터가 하나도 없다. UNIQE, NOT NULL이라고 함
+        - FK(Foreign Key) - 외래 키 -> 다른 엔티티(테이블)의 PK. 두 엔티티의 관께를 연결
+        - Relationship - 부모 엔티티와 자식 엔티티간의 연관, 부모 1, 자식 N을 가질 수 있음
+    - 카테시안 곱 - 2개의 테이블에서 나올수있는 모든 경우의 수를 말함
     - 내부조인, 외부조인
 - DDL
     - CREATE, 
