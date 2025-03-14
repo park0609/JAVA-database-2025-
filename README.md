@@ -43,7 +43,7 @@ java 개발자 database 리포지토리
     8. DBeaver 접속
         - Connection > select your DB > oracle 선택
 
-        <img src="./image/db001.png" width = "650>
+        <img src="./image/db001.png" width = "650">
 - DBeaver 툴 설치
     - https://dbeaver.io/download/
 - DML, DDL, DCL
@@ -164,7 +164,48 @@ java 개발자 database 리포지토리
         TRUNCATE TABLE 테이블명;
         ```
 ## 4일차
+- VS Code DB플러그인
+    - 확장 -> database검색 -> database  cilent -> 확장중 database 선택
+
+    <img src = "./image/db0002.png"  width = "650">
 - DML
-    - INSERT
-    - UPDATE
-    - DELETE
+    - INSERT - 테이블에 새로운 데이터를 삽입하는 명령
+        - 한 건씩 삽입
+        ```sql
+        insert into 테이블명[(컬럼리스트)]
+        values (값리스트);
+        ```
+        - 여러건 한꺼번에 삽입
+    - UPDATE - 데이터 변경, where 조건 없이 실행하면 테이블 모든 데이터가 수정됨(주의요망!)
+        ```sql
+        update 테이블명 set
+            컬럼명 = 변경할 값,
+            [컬럼명 = 변경할 값] -- 반복
+        [where 조건]
+        ```
+    - DELETE - 데이터 삭제, where 조건 없이 실행하면 테이블 모든 데이터가 삭제됨(주의요망!)
+        ```sql
+        delete from 테이블명
+        [where 조건]
+        ```
+- 트랜잭션
+    - 논리적인 처리단위
+    - 은행에서 돈을 찾을 때 아주 많은 테이블에 접근해서 일을 처리
+        - 적어도 일곱여덟개 이상의 테이블 접근해서 조회하고 업데이트 수행
+        - 제대로 일이 처리안되면 다시 원상복귀
+        ```sql
+        begin transaction; -- 트랜잭션 시작
+        commit; -- 트랜잭션 확정
+        rollback; -- 원상복귀
+        ```
+- 제약조건(constraint)
+    - 잘못된 데이터가 들어가지 않도록 막는 기법
+        - PK - 기본키, UNIQUE NOT NULL, 중복되지 않고 없어도 안됨
+        - FK - 외래키, 다른테이블 pk에 없는 값을 가져다 쓸 수 없음
+        - NOT NULL - 값이 빠지면 안됨
+        - UNIQUE - 들어간 데이터가 중복되면 안됨
+        - CHECK - 기준에 부합하지 않는 데이터는 입력되면 안됨
+- INDEX
+- VIEW
+- 서브쿼리
+- 시퀀스
