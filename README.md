@@ -72,14 +72,14 @@ java 개발자 database 리포지토리
         [order by 정렬속성(들) asc|desc]
         [with rollup]
         ```
-    - 기본 쿼리 학습 : [SQL](./Day_01/sql01_select(기본).sql)
+    - 기본 쿼리 학습 : [기본](./Day_01/sql01_select(기본).sql)
         1. 기본 select
         2. where 조건절
         3. null(!)
         4. order by 정렬 
         5. 집합
 
-- 함수(내장함수) [SQL](./Day_01/sql02_함수.sql)
+- 함수(내장함수) [함수](./Day_01/sql02_함수.sql)
     - 문자함수
     - 숫자함수
 
@@ -108,12 +108,12 @@ java 개발자 database 리포지토리
     - blob - 대용량 바이너리 데이터타입, 최대 4GB
     - bfile - 외부파일
 
-- 함수(계속) [SQL](./Day_02/sql01_함수계속.sql)
+- 함수(계속) [함수계속](./Day_02/sql01_함수계속.sql)
     - 문자함수
     - 숫자함수
     - 날짜함수
     - 형변환 함수
-- 복수행함수[SQL](./Day_02/sql02_복수형함수.sql)
+- 복수행함수 [복수행함수](./Day_02/sql02_복수형함수.sql)
     - 집계함수
     - GROUP BY
     - HAVING
@@ -121,7 +121,7 @@ java 개발자 database 리포지토리
     - RANK, DENSE_RANK
 
 ## 3일차
-- JOIN [SQL](./Day_03/sql03_Join.sql)
+- JOIN [JOIN](./Day_03/sql03_Join.sql)
     - ERD(Entitiy Relationship Diagram) - 개체 관계 다이어그램
         - PK(Primary Key) - 기본 키 -> 중복이 안되고 빠진 데이터가 하나도 없다. UNIQE, NOT NULL이라고 함
         - FK(Foreign Key) - 외래 키 -> 다른 엔티티(테이블)의 PK. 두 엔티티의 관께를 연결
@@ -136,7 +136,7 @@ java 개발자 database 리포지토리
     - 외부조인
         - PK와 FK간의 일치하지 않는 데이터도 출력하고자 할때 사용하는 방법
         - LEFT OUTER JOIN, RIGHT OUTER JOIN 또는 오라클 간결문법 사용
-- DDL[SQL](./Day_03/sql04_DDL.sql)
+- DDL [DDL](./Day_03/sql04_DDL.sql)
     - CREATE - table, view, procedure, function
         - 타입형
         ```sql 
@@ -168,7 +168,7 @@ java 개발자 database 리포지토리
     - 확장 -> database검색 -> database  cilent -> 확장중 database 선택
 
     <img src = "./image/db0002.png"  width = "650">
-- DML
+- DML [INSERT](./Day_04/sql01_DML(insert).sql), [UPDATE, DELETE](./Day_04/sql02_DML(update,delete).sql)
     - INSERT - 테이블에 새로운 데이터를 삽입하는 명령
         - 한 건씩 삽입
         ```sql
@@ -188,24 +188,57 @@ java 개발자 database 리포지토리
         delete from 테이블명
         [where 조건]
         ```
-- 트랜잭션
+- 트랜잭션 [트랜잭션](./Day_04/sql03_DML(transaction).sql)
     - 논리적인 처리단위
     - 은행에서 돈을 찾을 때 아주 많은 테이블에 접근해서 일을 처리
         - 적어도 일곱여덟개 이상의 테이블 접근해서 조회하고 업데이트 수행
         - 제대로 일이 처리안되면 다시 원상복귀
+        - DB 설정 AUTO COMMIT 해제 권한
+        - ROLLBACK은 트랜잭션 종료 X COMMIT을 해야 종료
         ```sql
-        begin transaction; -- 트랜잭션 시작
+        set transaction read write; -- 트랜잭션 시작(옵션)
         commit; -- 트랜잭션 확정
         rollback; -- 원상복귀
         ```
-- 제약조건(constraint)
+- 제약조건(constraint) [제약조건](./Day_04/sql04_제약조건.sql)
     - 잘못된 데이터가 들어가지 않도록 막는 기법
         - PK - 기본키, UNIQUE NOT NULL, 중복되지 않고 없어도 안됨
         - FK - 외래키, 다른테이블 pk에 없는 값을 가져다 쓸 수 없음
         - NOT NULL - 값이 빠지면 안됨
         - UNIQUE - 들어간 데이터가 중복되면 안됨
         - CHECK - 기준에 부합하지 않는 데이터는 입력되면 안됨
-- INDEX
+        - DEFAULT - null입력시 기본값이 입력되도록 하는 제약 조건
+        ```sql
+        create table 테이블명(
+            컬럼 생성시 제약조건 추가
+        );
+
+        alter table 테이블명 add constraint 제약조건
+        ```
+- INDEX [인덱스](./Day_04/sql05_INDEX.sql), [인덱스용테이블생성](./ref/bulk_data_insert.sql)
+    - 책의 찾아보기와 동일한 기능
+    - 검색을 매우 빨리 할 수 있도록 해줌
+    - B(alanced) Tree를 사용해서 검색횟수를 반이하로 줄임
+    - 인덱스 종류
+        - 클러스터드(Clustered) 인덱스 (테이블당 한개)
+            - PK가 자동으로 생성되는 인덱스(무지 빠름)
+            - PK가 없으면 처음으로 설정되는 UNIQUE 제약조건의 컬럼에 생성
+        - 보조 인덱스(Non-Clustered) (테이블당 여러개)
+            - 사용자가 추가하는 인덱스
+            - 클러스터드 인덱스보다 조금 느림
+    - 유의점
+        - PK에 자동 인덱스 후 컬럼에 UNIQUE을 걸어도 인덱스가 생성안됨. 수동으로 생성 필요
+        - WHERE절에서 검색하는 컬럼은 인덱스를 걸어주는 것이 성능향상에 도움
+        - 인덱스는 한 테이블당 4개이상 걸면 성능 저하
+        - NULL 값, 중복값이 많은 컬럼에 인덱스는 성능 저하
+        - INSERT, UPDATE, DELETE가 많이 발생하는 테이블에 인덱스를 걸면 성능 저하
+
+        ```sql
+        create index 인덱스명 on 테이블명(인덱스 걸 컬럼명)
+        ```
+
+## 5일차
 - VIEW
 - 서브쿼리
 - 시퀀스
+...

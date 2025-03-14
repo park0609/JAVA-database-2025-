@@ -21,5 +21,7 @@ SELECT count(birthday)
  GROUP BY to_char(birthday, 'MM')
  ORDER BY to_char(birthday, 'MM');
 
-SELECT *
-  FROM student;
+SELECT tel
+	 , CASE tel WHEN '02' THEN count(*) end
+  FROM student
+ GROUP BY tel;

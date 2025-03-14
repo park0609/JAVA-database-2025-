@@ -30,3 +30,7 @@ SELECT * FROM REGIONS_NEW;
 
 ROLLBACK; -- 원상복귀, 트랜잭션은 종료안됨
 COMMIT; -- 확정짓고 트랜잭션이 종료!
+
+SELECT first_name
+  FROM employees;
+ GROUP BY first_name;
