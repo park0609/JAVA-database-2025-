@@ -79,7 +79,7 @@ java 개발자 database 리포지토리
         4. order by 정렬 
         5. 집합
 
-- 함수(내장함수) [함수](./Day_01/sql02_함수.sql)
+- 함수(내장함수) : [함수](./Day_01/sql02_함수.sql)
     - 문자함수
     - 숫자함수
 
@@ -108,12 +108,12 @@ java 개발자 database 리포지토리
     - blob - 대용량 바이너리 데이터타입, 최대 4GB
     - bfile - 외부파일
 
-- 함수(계속) [함수계속](./Day_02/sql01_함수계속.sql)
+- 함수(계속) : [함수계속](./Day_02/sql01_함수계속.sql)
     - 문자함수
     - 숫자함수
     - 날짜함수
     - 형변환 함수
-- 복수행함수 [복수행함수](./Day_02/sql02_복수형함수.sql)
+- 복수행함수 : [복수행함수](./Day_02/sql02_복수형함수.sql)
     - 집계함수
     - GROUP BY
     - HAVING
@@ -121,7 +121,7 @@ java 개발자 database 리포지토리
     - RANK, DENSE_RANK
 
 ## 3일차
-- JOIN [JOIN](./Day_03/sql03_Join.sql)
+- JOIN : [JOIN](./Day_03/sql03_Join.sql)
     - ERD(Entitiy Relationship Diagram) - 개체 관계 다이어그램
         - PK(Primary Key) - 기본 키 -> 중복이 안되고 빠진 데이터가 하나도 없다. UNIQE, NOT NULL이라고 함
         - FK(Foreign Key) - 외래 키 -> 다른 엔티티(테이블)의 PK. 두 엔티티의 관께를 연결
@@ -136,7 +136,7 @@ java 개발자 database 리포지토리
     - 외부조인
         - PK와 FK간의 일치하지 않는 데이터도 출력하고자 할때 사용하는 방법
         - LEFT OUTER JOIN, RIGHT OUTER JOIN 또는 오라클 간결문법 사용
-- DDL [DDL](./Day_03/sql04_DDL.sql)
+- DDL : [DDL](./Day_03/sql04_DDL.sql)
     - CREATE - table, view, procedure, function
         - 타입형
         ```sql 
@@ -167,8 +167,8 @@ java 개발자 database 리포지토리
 - VS Code DB플러그인
     - 확장 -> database검색 -> database  cilent -> 확장중 database 선택
 
-    <img src = "./image/db0002.png"  width = "650">
-- DML [INSERT](./Day_04/sql01_DML(insert).sql), [UPDATE, DELETE](./Day_04/sql02_DML(update,delete).sql)
+    <img src = "./image/db002.png"  width = "650">
+- DML : [INSERT](./Day_04/sql01_DML(insert).sql), [UPDATE, DELETE](./Day_04/sql02_DML(update,delete).sql)
     - INSERT - 테이블에 새로운 데이터를 삽입하는 명령
         - 한 건씩 삽입
         ```sql
@@ -188,7 +188,8 @@ java 개발자 database 리포지토리
         delete from 테이블명
         [where 조건]
         ```
-- 트랜잭션 [트랜잭션](./Day_04/sql03_DML(transaction).sql)
+
+- 트랜잭션 : [트랜잭션](./Day_04/sql03_DML(transaction).sql)
     - 논리적인 처리단위
     - 은행에서 돈을 찾을 때 아주 많은 테이블에 접근해서 일을 처리
         - 적어도 일곱여덟개 이상의 테이블 접근해서 조회하고 업데이트 수행
@@ -200,7 +201,8 @@ java 개발자 database 리포지토리
         commit; -- 트랜잭션 확정
         rollback; -- 원상복귀
         ```
-- 제약조건(constraint) [제약조건](./Day_04/sql04_제약조건.sql)
+
+- 제약조건(constraint) : [제약조건](./Day_04/sql04_제약조건.sql)
     - 잘못된 데이터가 들어가지 않도록 막는 기법
         - PK - 기본키, UNIQUE NOT NULL, 중복되지 않고 없어도 안됨
         - FK - 외래키, 다른테이블 pk에 없는 값을 가져다 쓸 수 없음
@@ -215,7 +217,8 @@ java 개발자 database 리포지토리
 
         alter table 테이블명 add constraint 제약조건
         ```
-- INDEX [인덱스](./Day_04/sql05_INDEX.sql), [인덱스용테이블생성](./ref/bulk_data_insert.sql)
+
+- INDEX : [인덱스](./Day_04/sql05_INDEX.sql), [인덱스용테이블생성](./ref/bulk_data_insert.sql)
     - 책의 찾아보기와 동일한 기능
     - 검색을 매우 빨리 할 수 있도록 해줌
     - B(alanced) Tree를 사용해서 검색횟수를 반이하로 줄임
@@ -238,7 +241,49 @@ java 개발자 database 리포지토리
         ```
 
 ## 5일차
-- VIEW
-- 서브쿼리
-- 시퀀스
-...
+- VIEW : [VIEW](./Day_05/sql01_VIEW.sql)
+    - 기존 테이블에서 권한별로 보일수 있는 컬럼을 지정해서 만드는 개체(보안 목적)
+    - 기존 테이블 중 개인정보나 중요한 부분이 있으면 제외하고 보일 수 있음
+    - 뷰라도 INSERT, UPDATE, DELETE가 가능함. 단, 단일뷰에서만 가능
+    ```sql
+    create VIEW 뷰명
+    AS
+        SELECT
+    [WITH READ ONLY] -- 읽기 전용
+    ```
+    - 복합 뷰는 두개이상의 테이블을 JOIN해서 만든뷰. DML기능 불가
+
+- 서브쿼리 : [서브쿼리](./Day_05/sql02_서브쿼리.sql)
+    - 메인 쿼리를 도와주는 하위쿼리 뜻함. 소괄호() 내에 포함됨
+    - 단일행 서브쿼리, 다중행 서브쿼리마다 사용법 다름
+    - SELECT절 서브쿼리, FROM절 서브쿼리, WHERE절 서브 쿼리
+    - 서브쿼리는 JOIN으로 변경가능
+
+- 시퀀스 : [시퀀스](./Day_05/sql03_시퀀스.sql)
+    - 번호로 지정된 PK값을 자동으로 삽입할 수 있도록 도와주는 기능
+    - 없어도 기능에는 차이가 없지만 효율을 위해 사용하는 경우가 많음
+    - Oracle에만 존재. 타 DB보다 자동증가값 사용 불편
+    ```sql
+    create sequence 시퀀스명
+    incremant by 1 -- 증가값
+    start with 1 -- 초기 시작값
+    [MAXVALUE 999999] -- 최대증가값
+    [CYCLE] -- 최대증가값에 도달하면 다시 처음 1로 돌아올것인지
+    [cache] -- 번호증가 캐쉬. 대용량 삽입시만 관계 O
+    
+    시퀀스명.NEXTVAL
+    시퀀스명.CURRVAL
+    ```
+
+- 사용자 계정 권한 : [권한](./Day_05/sql05_권한.sql)
+    - 사용자 생성 후 권한(롤)을 부여해야 스키마를 사용가능
+
+        ```sql
+        -- 권한부여
+        GRANT 권한 | 롤 TO 사용자[WITH ADMIN|GRANT OPTION]
+        -- 권한해제
+        REVOKE 권한 | 롤 FROM 사용자
+        ```
+
+## 6일차
+- PL/SQL - Oracle에서 파이썬처럼 코딩
