@@ -337,8 +337,29 @@ java 개발자 database 리포지토리
         ```
         - 실행시 select문, DML등과 같이 사용
         ```sql
-        select *,함수명(파라미터)
+        select * 함수명(파라미터)
           from 컬럼명;
         ```
     - 커서
         - DB에서 테이블에 들어있는 데이터를 한줄씩 읽기 위해서 필요
+        ```sql
+        cursor 커서명 IS
+            select쿼리;
+        ```
+
+    - 트리거
+        - 특정 동작으로 다른 테이블에 자동으로 데이터가 변경되는 기능
+        - 한가지 동작에 대해서 연쇠적으로 다른일 발생
+        ```sql
+        create ot replace trigger 트리거명
+        before|after insert|update|delete on 테이블[뷰] 이름
+        begin
+            PL/SQL쿼리
+        END;
+        ```
+
+## 7일차
+- oracle 연동 python GUI 프로그램 개발
+    - [오라클연동](./toyproject/README.md)
+
+    
