@@ -23,9 +23,10 @@ Python GUI - Oracle연동 프로그램
 - ptqt 설치
     - 콘솔 > `pip install PyQt5` 설치
 
-- QtDesigner 설피
+- QtDesigner 설치
     - https://build-system.fman.io/qt-designer-download 다운로드 후 설치
 
+    <img src = '../image/db007.png' width = "250"> 
 
 #### PyQt5 개발
 1. PyQt 모듈 사용 원앱만들기
@@ -34,4 +35,53 @@ Python GUI - Oracle연동 프로그램
 4. 시그널(이벤트) 처리방법
 5. QtDesigner로 화면 디자인, PyQt와 연동
 
-<img src = '../image/db006.png' width = "250">, 
+<img src = '../image/db006.png' width = "250"> 
+
+
+#### Oracle연동 GUI개발 시작
+- 오라클 Python연동 DB(스키마) 생성
+    ```sql
+    CREATE USER madang IDENTIFIED BY madang;
+
+    -- 권한 설정
+    GRANT CONNECT, resource TO madang; 
+
+    -- madang으로 사용 스키마 변경
+
+    -- 테이블 Students 생성
+
+    CREATE TABLE Students (
+	    std_id 			NUMBER 			PRIMARY KEY,
+	    std_name 		varchar2(100) 	NOT NULL,
+	    std_mobile 		varchar2(15) 	NULL,
+	    std_regyear		number(4, 0) 	NOT null
+    );
+
+    -- Students용 시퀀스 생성
+    CREATE SEQUENCE SEQ_STUDENT
+	    INCREMENT BY 1
+	    START WITH 1;
+
+    COMMIT;
+    -- 사용자  madang으로 변경
+    ```
+- Student 테이블 생성, 더미데이터 추가
+    ```sql
+    SELECT * FROM students;
+
+    -- 더미데이터 삽입
+
+    INSERT INTO STUDENTS
+    VALUES (SEQ_STUDENT.nextval, '홍길동', '010-9999-8888', 1987);
+    INSERT INTO STUDENTS
+    VALUES (SEQ_STUDENT.nextval, '홍길순', '010-9999-8877', 1997);
+    ```
+- Python 오라클 연동 테스트
+    - 오라클 모듈
+        - oracleDB   - 오라클 최신버전 매칭
+        - Cx_Oracle  - 구버전까지 잘 됨
+    - 콘솔에서 pip install cx_Oracle
+    - microsoft C++ Build Tools 필요
+        - bulie Tool, C++ Cmake
+- QtDesginer로 화면구성
+- PyQt로 Oracle 연동 CRUD구현
