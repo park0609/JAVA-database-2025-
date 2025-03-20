@@ -82,6 +82,23 @@ Python GUI - Oracle연동 프로그램
         - Cx_Oracle  - 구버전까지 잘 됨
     - 콘솔에서 pip install cx_Oracle
     - microsoft C++ Build Tools 필요
-        - bulie Tool, C++ Cmake
+    - bulie Tool, C++ Cmake
+        - Visual Studio Installer 실행
+        - 개별 구성요소에서 아래 요소 선택
+            - [x] MSVC v1XX - VS 20XX C++ x64/x86 빌드도구
+            - [x] C++ CMaker Tools for Window
+            - [x] Window 10 SDK(10.0.xxxxx)
+        - 설치
+    - 콘솔에서 `> pip install cx_Oracle`
+    - 콘솔 오라클 연동 : [python](./) 
+        - DPI-1047오류발생 -> 64-bit Oracle Cilent Library가 OS에 설치되어 있지 않아서 발생
+        - 아래 사이트에서 버전에 맞는 Oracle Cilent를 다운로드
+        - https://www.oracle.com/kr/database/technologies/instant-client/winx64-64-downloads.html
+        - 11g 다운로드
+        - 압축해제(C:\DEV\Tool\instantcilent_11_2), 시스템정보 Path등록
+        - 재부팅
+
 - QtDesginer로 화면구성
 - PyQt로 Oracle 연동 CRUD구현
+
+## 8일차 
