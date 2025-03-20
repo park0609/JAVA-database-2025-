@@ -97,8 +97,12 @@ Python GUI - Oracle연동 프로그램
         - 11g 다운로드
         - 압축해제(C:\DEV\Tool\instantcilent_11_2), 시스템정보 Path등록
         - 재부팅
+    - 콘솔 테스트 결과
+
+        <img src = '../image/db008.png' width = "400">
 
 - QtDesginer로 화면구성
+
 - PyQt로 Oracle 연동 CRUD구현
 
 ## 8일차 

@@ -14,10 +14,12 @@ password = 'madang'
 conn = oci.connect(f'{username}/{password}@{host}:{port}/{sid}')
 cursor =  conn.cursor() # DB 커서와 동일한 역할을 하는 개체
 
-query = 'select * from Student' # 파이썬에서 쿼리호출시는 ;삭제
-cursor.excute(query)
+query = 'select * from Students' # 파이썬에서 쿼리호출시는 ;삭제
+cursor.execute(query)#
 
 # 불러온 데이터 처리
+for i, item in enumerate(cursor, start=1):
+    print(item)
 
 cursor.close()
 conn.close()
