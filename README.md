@@ -92,7 +92,7 @@ java 개발자 database 리포지토리
 
 - 데이터베이스 타입형
     - **CHAR(n)** - 고정형 문자열, 최대 2000바이트
-        - char(20) "Hello World"를 입력하면 , "Hello World       '로 저장
+        - char(20) "Hello World"를 입력하면 , `'Hello World       '`로 저장
         - CHAR는 고정형 문자열이기 때문에 지정된 바이트만큼 무조건 사용 만약 문자가 다쓰고도 바이트가 남으면 공백으로 처리
         - 기준코드나 반드시 자리수를 지켜야 하는 데이터에 필요함, 주민번호 등
     - **VARCHAR2(n)** - 가변형 문자열, 최대 4000바이트
@@ -124,7 +124,7 @@ java 개발자 database 리포지토리
 - JOIN : [JOIN](./Day_03/sql03_Join.sql)
     - ERD(Entitiy Relationship Diagram) - 개체 관계 다이어그램
         - PK(Primary Key) - 기본 키 -> 중복이 안되고 빠진 데이터가 하나도 없다. UNIQE, NOT NULL이라고 함
-        - FK(Foreign Key) - 외래 키 -> 다른 엔티티(테이블)의 PK. 두 엔티티의 관께를 연결
+        - FK(Foreign Key) - 외래 키 -> 다른 엔티티(테이블)의 PK. 두 엔티티의 관계를 연결
         - Relationship - 부모 엔티티와 자식 엔티티간의 연관, 부모 1, 자식 N을 가질 수 있음
     - 카테시안 곱 - 2개의 테이블에서 나올수있는 모든 경우의 수를 말함
         - 두 개 이상의 테이블의 조건과 관계없이 연결할 수 있는 경우의 수

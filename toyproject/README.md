@@ -103,6 +103,30 @@ Python GUI - Oracle연동 프로그램
 
 - QtDesginer로 화면구성
 
-- PyQt로 Oracle 연동 CRUD구현
+    <img src = '../image/db009.png' width = '400'>
 
 ## 8일차 
+
+- PyQt로 Oracle 연동 CRUD구현
+    - 조회 select 구현
+    - 삽입 insert 구현
+    - 수정, 삭제 구현
+    - 입력값 검증(validation check) 로직
+    - DML이 종료된 후 다시 데이터 로드 로직 추가
+    - 데이터 삽입 후 라인에디트에 기존 입력값이 남아있는 것 제거
+
+    <img src = '../image/db011.png' width = '400'>
+
+- 개발도중 문제
+    - [ ] DB에 저장된 데이터를 테이블위젯에서 더블클릭 한 뒤 수정않고 추가를 눌러도 새로 데이터가 삽입되는 문제
+    - [x] 수정모드에서 추가를 한 뒤 학생번호가 라인에디트에 그대로 존재
+
+- 개발완료 화면
+    - 아이콘 변경 및 추가
+
+    <img src ='../image/db012.png' width = '400'>
+
+### 데이터베이스 모델링
+- 서점 데이터 모델링
+
+ 

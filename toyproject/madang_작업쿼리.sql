@@ -18,3 +18,13 @@ CREATE SEQUENCE seq_student
 INSERT INTO MADANG.STUDENTS
 (std_id, std_name, std_mobile, std_regyear)
 VALUES(seq_STUDENT.nextval, :v_std_name, :v_std_mobile, :v_std_regyear);
+
+UPDATE MADANG.STUDENTS
+   SET std_name= :v_std_name
+     , std_mobile= :v_std_mobile
+     , std_regyear= :v_std_regyear
+ WHERE std_id = :v_std_id
+ 
+ DELETE FROM MADANG.STUDENTS
+WHERE STD_ID= :v_std_id
+ 
