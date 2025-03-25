@@ -169,6 +169,7 @@ Python GUI - Oracle연동 프로그램
     <img src = '../image/db014.png' width = '550'>
  
  ## 10일차
+ // 프로그래머스 인증시험 //
  - HR SQL 연습
- 
+
  - 코딩테스트 진행
