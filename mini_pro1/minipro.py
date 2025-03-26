@@ -156,31 +156,4 @@ self."테이블 명".doubleClicked.connect(self.tblstudentDoubleClick) # 안에�
 
 #====================================================================================================
 #창변환 함수
-# 시그널 연결 후 시그널 선택 명 함수와 동일하게 설정
-# 함수명 변경하고 맞춰서 집어넣고 각 class에 맞게 회면 전환 또는 기능 추가하면 될듯
-
-class WindowClass(QMainWindow):
-    def __init__(self):
-        super(WindowClass, self).__init__()
-        self.initUI()
-    
-    def initUI(self):
-        uic.loadUi('./toyproject/main.ui', self) # 임의 설정한 메인 윈도우
-
-    def btn_main_to_second(self): # 시그널 연결 할 때 메인에서 연결 할 함수
-        self.hide()                     # 메인윈도우 숨김
-        self.second = secondwindow()    #
-        self.second.exec()              # 두번째 창을 닫을 때 까지 기다림
-        self.show()                     # 두번째 창을 닫으면 다시 첫 번째 창이 보여짐짐
-
-class secondwindow(QDialog,QWidget):
-    def __init__(self):
-        super(secondwindow,self).__init__()
-        self.initUi()
-        self.show()
-
-    def initUi(self):
-        uic.loadUi('./toyproject/sub.ui',self)
-
-    def btn_second_to_main(self):
-        self.close()                    #클릭시 종료됨.
+# 시그널 연결 후 
